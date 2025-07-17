@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const SideMenu = () => {
   const [active,setActive]=useState("home");
   return (
-    <div className="fixed top-0 left-0 h-screen w-32 bg-[#1F1D2B] flex flex-col items-center gap-8 py-6 " >
+    <div className="fixed top-0 left-0 h-full w-32 bg-[#1F1D2B] flex flex-col items-center gap-8 py-6 " >
       <div className="text-white text-2xl h-14 w-20 mr-3 font-bold">BitePOS</div>
       <Link  to={"/"}><div className={`px-4 py-3 mr-3 rounded-lg  ${active==="home" ?"bg-[#EA7C69] text-white":"text-[tomato]"} `} onClick={()=>{
         setActive("home")
