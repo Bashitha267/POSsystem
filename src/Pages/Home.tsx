@@ -202,7 +202,7 @@ window.dispatchEvent(new Event("ordersUpdated"));
           {cate.map((item) => (
             <div
               key={item.id}
-              className={`cursor-pointer text-lg  font-bold ${
+              className={`cursor-pointer text-sm  font-bold ${
                 active === item.name
                   ? "text-[#EA7C69] border-b-4"
                   : "text-white"
