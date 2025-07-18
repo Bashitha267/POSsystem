@@ -118,7 +118,7 @@ export const Home = () => {
       <div className="flex flex-row gap-6 mt-5 mb-4">
         {cate.map((item) => (
           <div key={item.id}
-            className={`cursor-pointer text-lg font-bold ${
+            className={`cursor-pointer text-sm font-bold ${
               active === item.name ? "text-[#EA7C69] border-b-4" : "text-white"
             }`}
             onClick={() => setActive(item.name)}
@@ -130,7 +130,7 @@ export const Home = () => {
       <div className="grid grid-cols-3 mx-12  mt-8 mb-4 ">
         {
           sorted.map((item)=>(
-       <div className=" mb-8 z-40 relative bg-[#1F1D2B] rounded-xl overflow-hidden w-72 h-80 text-white">
+       <div className=" mb-8 z-40 mx-4 relative bg-[#1F1D2B] rounded-xl overflow-hidden w-56 h-72 text-white">
   <img
     src={item.img}
     className="w-80 h-80 object-cover -translate-y-9"
