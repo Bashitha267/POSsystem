@@ -115,7 +115,7 @@ export const Home = () => {
           ></input>
         </div>
       </div>
-      <div className="flex flex-row gap-6 mt-5 mb-4">
+      <div className="w-full flex flex-row gap-6 mt-5 mb-4">
         {cate.map((item) => (
           <div key={item.id}
             className={`cursor-pointer text-sm font-bold ${
