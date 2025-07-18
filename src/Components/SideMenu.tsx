@@ -11,34 +11,34 @@ export const SideMenu = () => {
         setActive("home")
       
       }}>
-     <HomeIcon size={35} ></HomeIcon>
+     <HomeIcon size={30} ></HomeIcon>
       </div></Link>
 <Link to={"/history"}>
      <div className={`px-4 py-3 mr-3 rounded-lg  ${active==="history" ?"bg-[#EA7C69] text-white":"text-[tomato]"} `} onClick={()=>{
         setActive("history")
       }}>
-     <History size={35} ></History>
+     <History size={30} ></History>
       </div>
 </Link>
 <Link to={"/chart"}>
       <div className={`px-4 py-3 mr-3 rounded-lg  ${active==="chart" ?"bg-[#EA7C69] text-white":"text-[tomato]"} `} onClick={()=>{
         setActive("chart")
       }}>
-     <PieChart size={35} ></PieChart>
+     <PieChart size={30} ></PieChart>
       </div>
 </Link>
  <Link to={"/add"}>
       <div className={`px-4 py-3 mr-3 rounded-lg  ${active==="add" ?"bg-[#EA7C69] text-white":"text-[tomato]"} `} onClick={()=>{
         setActive("add")
       }}>
-   <PlusCircle size={35} ></PlusCircle>
+   <PlusCircle size={30} ></PlusCircle>
       </div>
 </Link>
 <Link to={"/user"}>
        <div className={`px-4 py-3 mr-3 rounded-lg  ${active==="user" ?"bg-[#EA7C69] text-white":"text-[tomato]"} `} onClick={()=>{
         setActive("user")
       }}>
-    <User size={35} ></User>
+    <User size={30} ></User>
       </div>
 </Link>
     </div>
