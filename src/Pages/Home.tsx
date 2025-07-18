@@ -23,14 +23,22 @@ type products = {
   category: { id: number; name: string };
   is_available: boolean;
 };
+type Order={
+  img:string,
+  id:number,
+  unit_price:number,
+  total_price:number,
+  name:string,
+  qty:number,
 
+}
 export const Home = () => {
   const [cate, setCate] = useState<category[]>([]);
   const [sorted, setSorted] = useState<sorted[]>([]);
   const [products, setProducts] = useState<products[]>([]);
   const [loading, setLoading] = useState(false);
   const [ploading, setPloading] = useState(false);
-
+  const[order,setOrder]=useState<Order[]>([])
   const [active, setActive] = useState<string | null>(null);
 
   // Modal state
@@ -129,7 +137,7 @@ export const Home = () => {
               <img
                 src={modalProduct.img}
                 alt={modalProduct.name}
-                className="w-full h-48 object-cover rounded"
+                className="w-full h-64 object-contain rounded"
               />
               <h2 className="text-2xl font-semibold mt-4">{modalProduct.name}</h2>
               <p className="mt-2 text-lg">Price: Rs {modalProduct.price}</p>
@@ -152,7 +160,25 @@ export const Home = () => {
               <p className="mt-4  font-bold">
                 <span className="text-gray-100 text-lg">Total Price: </span><span className="text-rose-500 text-2xl p-1">Rs {modalProduct.price * quantity}</span>
               </p>
-              <div className="bg-[tomato] text-white px-3 py-2 rounded-3xl w-48 text-center mx-auto mt-4 cursor-pointer">Add to bill</div>
+              <div className="bg-[tomato] text-white px-3 py-2 rounded-3xl w-48 text-center mx-auto mt-4 cursor-pointer" onClick={()=>{
+                    const newOrder = {
+  id: modalProduct.id,             
+  img: modalProduct.img,           
+  name: modalProduct.name,         
+  qty: quantity,                   
+  unit_price: modalProduct.price,  
+  total_price: modalProduct.price * quantity, 
+};
+const existingOrders = [...order];
+
+existingOrders.push(newOrder);
+  setOrder(existingOrders);
+
+localStorage.setItem("pos_orders", JSON.stringify(existingOrders));
+window.dispatchEvent(new Event("ordersUpdated"));
+  setModalProduct(null); 
+
+              }}>Add to bill</div>
             </div>
           </div>
         </>
@@ -163,7 +189,7 @@ export const Home = () => {
           <div className="text-gray-200 text-xl font-bold">
             {new Date().toLocaleDateString("en-CA")}
           </div>
-          <div className="flex text-white gap-3 items-center">
+          <div className="flex text-white gap-3 items-center bg-[#2D303E] px-4 rounded-2xl">
             <Search size={24} />
             <input
               className="text-lg p-2 focus:"
@@ -176,7 +202,7 @@ export const Home = () => {
           {cate.map((item) => (
             <div
               key={item.id}
-              className={`cursor-pointer text-sm font-bold ${
+              className={`cursor-pointer text-lg  font-bold ${
                 active === item.name
                   ? "text-[#EA7C69] border-b-4"
                   : "text-white"
@@ -187,11 +213,11 @@ export const Home = () => {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-3 mx-4 mt-8 mb-4">
+        <div className="grid grid-cols-3 mx-12 mt-8 mb-4">
           {sorted.map((item) => (
             <div
               key={item.id}
-              className="mb-8 z-40  ml-4 mr-4 relative bg-[#1F1D2B] rounded-xl overflow-hidden w-80 h-96 text-white cursor-pointer"
+              className="mb-8 z-40 mx-4 relative bg-[#1F1D2B] rounded-xl overflow-hidden w-56 h-72 text-white cursor-pointer"
               onClick={() => {
                 setModalProduct(item);
                 setQuantity(1);
@@ -206,8 +232,8 @@ export const Home = () => {
                 <div className="text-center text-lg font-semibold">
                   {item.name}
                 </div>
-                <div className="text-center text-md font-bold mt-1">
-                  {item.price}
+                <div className="my-1 text-center  font-bold mt-1 text-red-500 text-2xl">
+                  Rs {item.price}
                 </div>
               </div>
             </div>

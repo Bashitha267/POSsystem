@@ -14,7 +14,7 @@ function App() {
 <div className='ml-32flex bg-[#252836] mr-52 mx-auto'>
   <SideMenu/>
   <Bill/>
-  <div className="ml-36  p-4 mx-auto mr-36">
+  <div className="ml-36  p-4 mx-auto mr-36 h-screen ">
     <Routes>
       <Route path="/" element={<Home />} />
             <Route path="/history" element={<History />} />
