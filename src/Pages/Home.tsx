@@ -133,7 +133,7 @@ export const Home = () => {
        <div className=" mb-8 z-40 mx-4 relative bg-[#1F1D2B] rounded-xl overflow-hidden w-56 h-72 text-white">
   <img
     src={item.img}
-    className="w-80 h-80 object-cover -translate-y-9"
+    className="w-64 h-64 object-cover -translate-y-9"
     alt="Food"
   />
   <div className="absolute z-10 bottom-0 justify-end left-0 w-full  flex flex-col h-20  p-4">
