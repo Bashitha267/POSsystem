@@ -176,7 +176,7 @@ export const Home = () => {
           {cate.map((item) => (
             <div
               key={item.id}
-              className={`cursor-pointer text-lg  font-bold ${
+              className={`cursor-pointer text-sm font-bold ${
                 active === item.name
                   ? "text-[#EA7C69] border-b-4"
                   : "text-white"
@@ -187,11 +187,11 @@ export const Home = () => {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-3 mx-12 mt-8 mb-4">
+        <div className="grid grid-cols-3 mx-4 mt-8 mb-4">
           {sorted.map((item) => (
             <div
               key={item.id}
-              className="mb-8 z-40 mx-4 relative bg-[#1F1D2B] rounded-xl overflow-hidden w-80 h-96 text-white cursor-pointer"
+              className="mb-8 z-40  ml-4 mr-4 relative bg-[#1F1D2B] rounded-xl overflow-hidden w-80 h-96 text-white cursor-pointer"
               onClick={() => {
                 setModalProduct(item);
                 setQuantity(1);
