@@ -12,6 +12,9 @@ type Order = {
 export const Bill = () => {
     const [orders, setOrders] = useState<Order[]>([]);
     const [total,setTotal]=useState(0)
+    const deleteElement=()=>{
+
+    }
     useEffect(() => {
   const total_price = orders.reduce((acc, item) => acc + item.total_price, 0);
   setTotal(total_price);
@@ -57,7 +60,9 @@ export const Bill = () => {
                 <div className="text-white text-lg  px-2  bg-[#14151a] cursor-pointer"  >+</div>
 
               </div>
-<div><Trash color="red" size={27}/></div>
+<div className="cursor-pointer" onClick={()=>{
+  
+}}><Trash color="red" size={27}/></div>
               </div>
 
             </div>

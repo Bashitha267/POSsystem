@@ -184,7 +184,7 @@ window.dispatchEvent(new Event("ordersUpdated"));
         </>
       )}
 
-      <div className="flex flex-col">
+      <div className="flex flex-col mr-7 h-full overflow-visible" >
         <div className="flex flex-row justify-between items-center">
           <div className="text-gray-200 text-xl font-bold">
             {new Date().toLocaleDateString("en-CA")}
@@ -198,11 +198,11 @@ window.dispatchEvent(new Event("ordersUpdated"));
             />
           </div>
         </div>
-        <div className="w-full flex flex-row gap-6 mt-5 mb-4">
+        <div className="w-full flex flex-row gap-6 mt-5 mb-4 ">
           {cate.map((item) => (
             <div
               key={item.id}
-              className={`cursor-pointer text-sm  font-bold ${
+              className={`cursor-pointer text-xl  font-bold ${
                 active === item.name
                   ? "text-[#EA7C69] border-b-4"
                   : "text-white"
@@ -213,11 +213,11 @@ window.dispatchEvent(new Event("ordersUpdated"));
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-3 mx-12 mt-8 mb-4">
+        <div className="grid grid-cols-3  mt-8 mb-4">
           {sorted.map((item) => (
             <div
               key={item.id}
-              className="mb-8 z-40 mx-4 relative bg-[#1F1D2B] rounded-xl overflow-hidden w-56 h-72 text-white cursor-pointer"
+              className="mb-8 z-40 mx-4 relative bg-[#1F1D2B] rounded-xl overflow-hidden w-64 h-80 text-white cursor-pointer"
               onClick={() => {
                 setModalProduct(item);
                 setQuantity(1);
@@ -225,7 +225,7 @@ window.dispatchEvent(new Event("ordersUpdated"));
             >
               <img
                 src={item.img}
-                className="w-80 h-80 object-cover -translate-y-9"
+                className="w-64 h-64 object-cover -translate-y-9"
                 alt="Food"
               />
               <div className="absolute z-10 bottom-0 justify-end left-0 w-full flex flex-col h-20 p-4">
