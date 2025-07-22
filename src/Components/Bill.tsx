@@ -63,6 +63,7 @@ export const Bill = () => {
 
   } catch (error) {
     console.error("Unexpected error:", error);
+    
   }
 };
 
@@ -88,6 +89,20 @@ export const Bill = () => {
   }, []);
 
   return (
+<>
+{success && (
+  <div
+    className="fixed inset-0 backdrop-blur-md z-50 flex items-center justify-center"
+    onClick={() => setSuccess(false)}
+  >
+    <div
+      className="bg-[#1F1D2B] rounded-lg p-8 w-96 text-white relative text-center text-lg font-bold"
+      onClick={(e) => e.stopPropagation()} 
+    >
+      Order Added Successfully.
+    </div>
+  </div>
+)}
     <div className="fixed top-0 right-0 h-screen w-96 bg-[#1F1D2B] flex flex-col  gap-8 pt-5 text-white overflow-y-scroll scrollbar-hide">
       <div className=" ml-8 flex flex-row text-lg font-bold ">Order</div>
       {orders.map((item) => (
@@ -143,5 +158,6 @@ export const Bill = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
