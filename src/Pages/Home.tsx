@@ -10,6 +10,7 @@ type sorted = {
   id: number;
   img: string;
   name: string;
+  
   price: number;
   category: { id: any; name: any };
   is_available: boolean;
@@ -19,17 +20,19 @@ type products = {
   id: number;
   img: string;
   name: string;
+
   price: number;
   category: { id: number; name: string };
   is_available: boolean;
 };
 type Order={
   img:string,
-  id:number,
+  
   unit_price:number,
   total_price:number,
   name:string,
   qty:number,
+  food_id:number,
 
 }
 export const Home = () => {
@@ -40,8 +43,7 @@ export const Home = () => {
   const [ploading, setPloading] = useState(false);
   const[order,setOrder]=useState<Order[]>([])
   const [active, setActive] = useState<string | null>(null);
-
-  // Modal state
+  const[alreadyAdded,setAlreadyAdded]=useState(false);
   const [modalProduct, setModalProduct] = useState<products | null>(null);
   const [quantity, setQuantity] = useState(1);
 
@@ -90,12 +92,14 @@ export const Home = () => {
             img: item.img,
             name: item.name,
             price: item.price,
+           
             is_available: item.is_available,
             category: Array.isArray(item.category)
               ? item.category[0]
               : item.category,
           }));
           setProducts(mappedData);
+        
         }
       } catch (e) {
         console.log(e);
@@ -119,7 +123,20 @@ export const Home = () => {
 
   return (
     <>
-     
+     {alreadyAdded && (<>
+     <div
+            className="fixed inset-0   backdrop-blur-md z-50"
+            onClick={() => setAlreadyAdded(false)}
+          />
+          <div className="fixed inset-0 flex items-center justify-center z-50">
+            <div className="bg-[#1F1D2B] rounded-lg p-8 w-96 text-white relative text-center text-lg font-bold" onClick={()=>{
+              setAlreadyAdded(false)
+            }}>
+              Item Already Added.
+            </div>
+          </div >
+
+     </>)}
       {modalProduct && (
         <>
           <div
@@ -132,7 +149,7 @@ export const Home = () => {
                 onClick={() => setModalProduct(null)}
                 className="absolute top-2 right-2 text-white text-xl font-bold"
               >
-                &times;
+                
               </button>
               <img
                 src={modalProduct.img}
@@ -162,14 +179,23 @@ export const Home = () => {
               </p>
               <div className="bg-[tomato] text-white px-3 py-2 rounded-3xl w-48 text-center mx-auto mt-4 cursor-pointer" onClick={()=>{
                     const newOrder = {
-  id: modalProduct.id,             
+  
+  food_id:modalProduct.id, 
   img: modalProduct.img,           
   name: modalProduct.name,         
   qty: quantity,                   
   unit_price: modalProduct.price,  
   total_price: modalProduct.price * quantity, 
 };
-const existingOrders = [...order];
+   const existingOrders = [...order];
+const alreadyInOrder = existingOrders.some((item) => item.food_id === modalProduct.id);
+
+    if (alreadyInOrder) {
+      setAlreadyAdded(true);
+      setModalProduct(null);
+      return;
+    }
+
 
 existingOrders.push(newOrder);
   setOrder(existingOrders);
