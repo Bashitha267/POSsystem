@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import supabase from "../supabaseClient";
 
@@ -147,9 +147,9 @@ export const Home = () => {
             <div className="bg-[#1F1D2B] rounded-lg p-8 w-96 text-white relative">
               <button
                 onClick={() => setModalProduct(null)}
-                className="absolute top-2 right-2 text-white text-xl font-bold"
+                className="absolute top-2 right-2 text-white text-xl  mr-5 mt-4 hover:text-[tomato] font-bold cursor-pointer"
               >
-                
+                <X size={28} fontWeight={600}></X>
               </button>
               <img
                 src={modalProduct.img}

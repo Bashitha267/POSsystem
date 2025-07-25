@@ -14,11 +14,16 @@ type Order = {
 export const Bill = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [total, setTotal] = useState(0);
-  const [success,setSuccess]=useState(false)
+  const [success,setSuccess]=useState(false);
+  const[orderEmpty,setOrderEmpty]=useState(false);
 
   const confirm_order = async (e: React.MouseEvent<HTMLButtonElement>) => {
   e.preventDefault(); // ✅ fixed typo
   try {
+        if(orders.length==0){
+      setOrderEmpty(true);
+      return;
+    }
     const { data: orderData, error: orderError } = await supabase
       .from("orders")
       .insert({
@@ -32,7 +37,7 @@ export const Bill = () => {
       console.error("Order insert error:", orderError);
       return;
     }
-
+ 
     const newOrderId = orderData.id;
 
     const orderDetails = orders.map((item) => ({
@@ -43,7 +48,7 @@ export const Bill = () => {
       unit_price: item.unit_price,
       total_price: item.total_price,
     }));
-
+   
     const { error: detailsError } = await supabase
       .from("order_details")
       .insert(orderDetails);
@@ -90,6 +95,19 @@ export const Bill = () => {
 
   return (
 <>
+{orderEmpty && (
+  <div
+    className="fixed inset-0 backdrop-blur-md z-50 flex items-center justify-center"
+    onClick={() => setOrderEmpty(false)}
+  >
+    <div
+      className="bg-[#1F1D2B] rounded-lg p-8 w-96 text-white relative text-center text-lg font-bold"
+      onClick={(e) => e.stopPropagation()} 
+    >
+      Your Order is Empty.
+    </div>
+  </div>
+)}
 {success && (
   <div
     className="fixed inset-0 backdrop-blur-md z-50 flex items-center justify-center"
