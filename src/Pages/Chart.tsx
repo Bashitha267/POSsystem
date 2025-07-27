@@ -78,7 +78,7 @@ export const Chart = () => {
         </div>
           
       </div>
-      <div className="flex flex-row w-full max-w-3xl bg-[#1F1D2B] ml-5 mt-5">
+      <div className="flex flex-row ml-5 mt-5">
         <DashboardBarChart/>
       </div>
       </div>
