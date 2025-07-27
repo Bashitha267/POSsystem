@@ -10,6 +10,7 @@ export const Chart = () => {
   const [orderLoading, setOrderLoading] = useState(false);
   const [total, setTotal] = useState(0);
   const[count,setCount]=useState(0);
+  // const[orderCount,setOrdercount]=useState(0)
   useEffect(() => {
     const getOrders = async () => {
       setOrderLoading(true);
@@ -36,6 +37,7 @@ export const Chart = () => {
             return ordernewDate===today;
           })
           setCount(orderCount.length)
+          
         }
       } catch (e) {
         console.log(e);
@@ -56,6 +58,18 @@ export const Chart = () => {
           <div className="text-lg">Todays Total</div>
 
              <div className="text-3xl">{total}</div>
+          </div>
+         <div className="justify-end  text-lg  items-start mx-5 my-2">{new Date().toLocaleString('en-CA').slice(0,10)}</div>
+        </div>
+
+          <div className="flex gap-3 flex-row bg-[#1F1D2B] px-2 py-2 text-white ml-5 ">
+          <div className=" mt-2 my-auto">
+            <img src="https://res.cloudinary.com/dnfbik3if/image/upload/v1753599951/shopingcart_logo_cryaib.png" className="p-3 w-25 h-25 object-contain"></img>
+          </div>
+          <div className="flex flex-col flex-1 mx-4 my-2">
+          <div className="text-lg">Todays Total Orders</div>
+
+             <div className="text-3xl">{count}</div>
           </div>
          <div className="justify-end  text-lg  items-start mx-5 my-2">{new Date().toLocaleString('en-CA').slice(0,10)}</div>
         </div>
