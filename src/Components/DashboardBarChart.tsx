@@ -35,15 +35,9 @@ const options = {
     },
   },
 };
-type Order={
-   id: number;
-  created_at: Date;
-  total_amount: number;
 
-}
 
 export default function DashboardBarChart() {
-  const [orders,setOrders]=useState<Order []>([]);
   const[orderLoading,setOrdersLoading]=useState(false)
    const [monthlyCounts, setMonthlyCounts] = useState<number[]>(Array(12).fill(0));
    const [monthlyTotal, setMonthlyTotal] = useState<number[]>(Array(12).fill(0));
@@ -87,6 +81,7 @@ const total=Array(12).fill(0)
     }
     getOrders()
   },[])
+  console.log(orderLoading)
   const chartdata = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May","June","July","August","September","Octomber","November","December"],
   datasets: [
