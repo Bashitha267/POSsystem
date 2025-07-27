@@ -11,6 +11,8 @@ export const Chart = () => {
   const [total, setTotal] = useState(0);
   const[count,setCount]=useState(0);
   // const[orderCount,setOrdercount]=useState(0)
+  console.log(orders)
+  console.log(orderLoading)
   useEffect(() => {
     const getOrders = async () => {
       setOrderLoading(true);
