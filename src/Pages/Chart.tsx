@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import DashboardBarChart from "../Components/DashboardBarChart";
 import supabase from "../supabaseClient";
 type Order = {
   id: number;
@@ -50,8 +51,8 @@ export const Chart = () => {
     getOrders();
   }, []);
   return (
-    
-      <div className="flex flex-row gap-5">
+      <div className="flex-col flex">
+        <div className="flex flex-row gap-5">
         <div className="flex gap-3 flex-row bg-[#1F1D2B] px-2 py-2 text-white ml-5 ">
           <div className=" mt-2 my-auto">
             <img src="https://res.cloudinary.com/dnfbik3if/image/upload/v1753431793/Simple_Illustrative_Price_Tag_Logo_iixrfp.png" className="p-3 w-25 h-25 object-cover"></img>
@@ -77,6 +78,14 @@ export const Chart = () => {
         </div>
           
       </div>
+      <div className="flex flex-row w-full max-w-3xl bg-[#1F1D2B] ml-5 mt-5">
+        <DashboardBarChart/>
+      </div>
+      </div>
+        
+
+     
+      
  
   );
 };
