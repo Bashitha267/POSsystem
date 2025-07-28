@@ -33,12 +33,12 @@ const options = {
 };
 
 export default function DashboardBarChart() {
-  const [orderLoading, setOrdersLoading] = useState(false);
+ 
   const [monthlyCounts, setMonthlyCounts] = useState<number[]>(Array(12).fill(0));
   const [monthlyTotal, setMonthlyTotal] = useState<number[]>(Array(12).fill(0));
 
   useEffect(() => {
-    setOrdersLoading(true);
+    
     const getOrders = async () => {
       try {
         const { data, error } = await supabase
@@ -63,7 +63,7 @@ export default function DashboardBarChart() {
       } catch (e) {
         console.log(e);
       } finally {
-        setOrdersLoading(false);
+       
       }
     };
     getOrders();
