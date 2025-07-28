@@ -11,10 +11,10 @@ function App() {
 // bg-[#252836]
   return (
 <BrowserRouter>
-<div className='ml-32flex bg-[#252836] mr-52 mx-auto'>
+<div className='ml-32flex bg-[#252836] mr-52 mx-auto h-full '>
   <SideMenu/>
   <Bill/>
-  <div className="ml-36  p-4 mx-auto mr-36 h-screen ">
+  <div className="ml-36  p-4 mx-auto mr-36 h-screen max-w-screen-xl">
     <Routes>
       <Route path="/" element={<Home />} />
             <Route path="/history" element={<History />} />

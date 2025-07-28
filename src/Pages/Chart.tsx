@@ -53,14 +53,14 @@ export const Chart = () => {
     getOrders();
   }, [inputDate,inpOrderCountDay]);
   return (
-      <div className="flex-col flex">
+      <div className="flex-col flex max-w-xl">
         <div className="flex flex-row gap-5">
-        <div className="flex gap-3 flex-row bg-[#1F1D2B] px-2 py-2 text-white ml-5 h-full">
+        <div className="w-fit flex gap-3 flex-row bg-[#1F1D2B] px-2 py-2 text-white ml-5 ">
           <div className=" mt-2 my-auto">
             <img src="https://res.cloudinary.com/dnfbik3if/image/upload/v1753431793/Simple_Illustrative_Price_Tag_Logo_iixrfp.png" className="p-3 w-25 h-25 object-cover"></img>
           </div>
           <div className="flex flex-col flex-1 mx-4 my-2">
-          <div className="text-lg">Total Amount Per Day</div>
+          <div className="text-md">Total Amount Per Day</div>
 
              <div className="text-3xl">{total}</div>
           </div>
@@ -70,7 +70,7 @@ export const Chart = () => {
          }} className="block bg-white text-black w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"></input></div>
         </div>
 
-          <div className="flex gap-3 flex-row bg-[#1F1D2B] px-2 py-2 text-white ml-5 ">
+          <div className=" w-fit flex gap-3 flex-row bg-[#1F1D2B] px-2 py-2 text-white ml-5 ">
           <div className=" mt-2 my-auto">
             <img src="https://res.cloudinary.com/dnfbik3if/image/upload/v1753599951/shopingcart_logo_cryaib.png" className="p-3 w-25 h-25 object-contain"></img>
           </div>
