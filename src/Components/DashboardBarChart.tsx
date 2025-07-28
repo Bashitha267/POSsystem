@@ -94,22 +94,22 @@ export default function DashboardBarChart() {
   };
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col mt-3">
       <h2 className="text-xl font-semibold mb-4 text-white text-center mt-4">Monthly Stats</h2>
 
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* Chart 1 */}
-        <div className="w-full lg:w-1/2 bg-[#1F1D2B] p-4 rounded-lg">
+     
+        <div className="w-full lg:w-1/2 bg-[#1F1D2B] p-4 rounded-lg h-fit">
           <h3 className="text-white text-center mb-2">Monthly Orders</h3>
-          <div className="h-72">
+          <div className="">
             <Bar data={chartdata} options={options} />
           </div>
         </div>
 
-        {/* Chart 2 */}
-        <div className="w-full lg:w-1/2 bg-[#1F1D2B] p-4 rounded-lg">
+      
+        <div className="w-full lg:w-1/2 bg-[#1F1D2B] p-4 rounded-lg h-fit">
           <h3 className="text-white text-center mb-2">Monthly Total</h3>
-          <div className="h-72">
+          <div className="">
             <Bar data={chartdatatotal} options={options} />
           </div>
         </div>

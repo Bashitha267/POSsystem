@@ -53,11 +53,11 @@ export const Chart = () => {
     getOrders();
   }, [inputDate,inpOrderCountDay]);
 return (
-    <div className="flex flex-col w-full px-4">
-      {/* Top Section with Cards */}
+    <div className="flex flex-col w-full px-4 mt-4">
+    
       <div className="flex flex-col md:flex-row gap-5 justify-between">
 
-        {/* Total Amount Card */}
+        
         <div className="flex flex-col md:flex-row gap-3 bg-[#1F1D2B] text-white p-3 rounded-lg w-full md:w-1/2">
           <div className="flex justify-center items-center">
             <img
@@ -80,7 +80,7 @@ return (
           </div>
         </div>
 
-        {/* Total Orders Card */}
+       
         <div className="flex flex-col md:flex-row gap-3 bg-[#1F1D2B] text-white p-3 rounded-lg w-full md:w-1/2">
           <div className="flex justify-center items-center">
             <img
@@ -104,8 +104,8 @@ return (
         </div>
       </div>
 
-      {/* Chart Section */}
-      <div className="mt-6 w-full">
+      
+      <div className="mt-6 w-full h-fit">
         <DashboardBarChart />
       </div>
     </div>
