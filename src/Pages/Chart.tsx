@@ -52,48 +52,63 @@ export const Chart = () => {
     };
     getOrders();
   }, [inputDate,inpOrderCountDay]);
-  return (
-      <div className="flex-col flex max-w-xl">
-        <div className="flex flex-row gap-5">
-        <div className="w-fit flex gap-3 flex-row bg-[#1F1D2B] px-2 py-2 text-white ml-5 ">
-          <div className=" mt-2 my-auto">
-            <img src="https://res.cloudinary.com/dnfbik3if/image/upload/v1753431793/Simple_Illustrative_Price_Tag_Logo_iixrfp.png" className="p-3 w-25 h-25 object-cover"></img>
-          </div>
-          <div className="flex flex-col flex-1 mx-4 my-2">
-          <div className="text-md">Total Amount Per Day</div>
+return (
+    <div className="flex flex-col w-full px-4">
+      {/* Top Section with Cards */}
+      <div className="flex flex-col md:flex-row gap-5 justify-between">
 
-             <div className="text-3xl">{total}</div>
+        {/* Total Amount Card */}
+        <div className="flex flex-col md:flex-row gap-3 bg-[#1F1D2B] text-white p-3 rounded-lg w-full md:w-1/2">
+          <div className="flex justify-center items-center">
+            <img
+              src="https://res.cloudinary.com/dnfbik3if/image/upload/v1753431793/Simple_Illustrative_Price_Tag_Logo_iixrfp.png"
+              className="p-3 w-20 h-20 object-cover"
+              alt="Total Amount"
+            />
           </div>
-         <div className="justify-end  text-lg  items-start mx-5 my-2 flex flex-row"><input type="date" defaultValue={inputDate} onChange={(e)=>{
-          setInputDate(e.target.value)
-          // console.log(inputDate)
-         }} className="block bg-white text-black w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"></input></div>
+          <div className="flex-1 flex flex-col justify-center px-2">
+            <div className="text-sm">Total Amount Per Day</div>
+            <div className="text-3xl">{total}</div>
+          </div>
+          <div className="flex items-center mt-2 md:mt-0">
+            <input
+              type="date"
+              defaultValue={inputDate}
+              onChange={(e) => setInputDate(e.target.value)}
+              className="bg-white text-black w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
         </div>
 
-          <div className=" w-fit flex gap-3 flex-row bg-[#1F1D2B] px-2 py-2 text-white ml-5 ">
-          <div className=" mt-2 my-auto">
-            <img src="https://res.cloudinary.com/dnfbik3if/image/upload/v1753599951/shopingcart_logo_cryaib.png" className="p-3 w-25 h-25 object-contain"></img>
+        {/* Total Orders Card */}
+        <div className="flex flex-col md:flex-row gap-3 bg-[#1F1D2B] text-white p-3 rounded-lg w-full md:w-1/2">
+          <div className="flex justify-center items-center">
+            <img
+              src="https://res.cloudinary.com/dnfbik3if/image/upload/v1753599951/shopingcart_logo_cryaib.png"
+              className="p-3 w-20 h-20 object-contain"
+              alt="Total Orders"
+            />
           </div>
-          <div className="flex flex-col flex-1 mx-4 my-2">
-          <div className="text-lg">Total Orders Per Day</div>
-
-             <div className="text-3xl">{count}</div>
+          <div className="flex-1 flex flex-col justify-center px-2">
+            <div className="text-sm">Total Orders Per Day</div>
+            <div className="text-3xl">{count}</div>
           </div>
-          <div className="justify-end  text-lg  items-start mx-5 my-2 flex flex-row"><input type="date" defaultValue={inputDate} onChange={(e)=>{
-          setInpOrderCountDay(e.target.value)
-          // console.log(inputDate)
-         }} className="block w-full px-3 py-2 border bg-white text-black border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"></input></div>
+          <div className="flex items-center mt-2 md:mt-0">
+            <input
+              type="date"
+              defaultValue={inputDate}
+              onChange={(e) => setInpOrderCountDay(e.target.value)}
+              className="bg-white text-black w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
         </div>
-          
       </div>
-      <div className="flex flex-row ml-5 mt-5">
-        <DashboardBarChart/>
-      </div>
-      </div>
-        
 
-     
-      
- 
+      {/* Chart Section */}
+      <div className="mt-6 w-full">
+        <DashboardBarChart />
+      </div>
+    </div>
   );
 };
+

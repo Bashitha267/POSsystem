@@ -1,4 +1,3 @@
-// DashboardBarChart.tsx
 import {
   BarElement,
   CategoryScale,
@@ -11,22 +10,19 @@ import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import supabase from "../supabaseClient";
 
-
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
-
-
 
 const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: "top"as const ,
+      position: "top" as const,
     },
   },
   layout: {
     padding: {
-      top: 5, 
-      bottom:10
+      top: 5,
+      bottom: 10,
     },
   },
   scales: {
@@ -36,16 +32,15 @@ const options = {
   },
 };
 
-
 export default function DashboardBarChart() {
-  const[orderLoading,setOrdersLoading]=useState(false)
-   const [monthlyCounts, setMonthlyCounts] = useState<number[]>(Array(12).fill(0));
-   const [monthlyTotal, setMonthlyTotal] = useState<number[]>(Array(12).fill(0));
+  const [orderLoading, setOrdersLoading] = useState(false);
+  const [monthlyCounts, setMonthlyCounts] = useState<number[]>(Array(12).fill(0));
+  const [monthlyTotal, setMonthlyTotal] = useState<number[]>(Array(12).fill(0));
 
-  useEffect(()=>{
+  useEffect(() => {
     setOrdersLoading(true);
-    const getOrders=async()=>{
-      try{
+    const getOrders = async () => {
+      try {
         const { data, error } = await supabase
           .from("orders")
           .select("id, created_at, total_amount");
@@ -53,74 +48,71 @@ export default function DashboardBarChart() {
           console.error("Error fetching orders:", error);
           return;
         }
-        if(data){
-const counts = Array(12).fill(0);
-const total=Array(12).fill(0)
+        if (data) {
+          const counts = Array(12).fill(0);
+          const total = Array(12).fill(0);
           data.forEach((order) => {
             const orderDate = new Date(order.created_at);
             const month = orderDate.getMonth();
             counts[month]++;
-            total[month]=total[month]+order.total_amount;
+            total[month] += order.total_amount;
           });
-          setMonthlyCounts(counts)
-          setMonthlyTotal(total)
+          setMonthlyCounts(counts);
+          setMonthlyTotal(total);
         }
-
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setOrdersLoading(false);
       }
-      catch(e){
-        console.log(e)
-      }
-      finally{
-        setOrdersLoading(false)
-      }
+    };
+    getOrders();
+  }, []);
 
-
-
-
-
-    }
-    getOrders()
-  },[])
-  console.log(orderLoading)
   const chartdata = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May","June","July","August","September","Octomber","November","December"],
-  datasets: [
-    {
-      label: "Orders Count",
-      data: monthlyCounts,
-      backgroundColor: "white", 
-      borderRadius: 6,
-      padding: 20,
-      
-    },
-  ],
-};
-const chartdatatotal = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May","June","July","August","September","Octomber","November","December"],
-  datasets: [
-    {
-      label: "Month Total",
-      data: monthlyTotal,
-      backgroundColor: "white", 
-      borderRadius: 6,
-      padding: 20,
-      
-    },
-  ],
-};
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "August", "September", "October", "November", "December"],
+    datasets: [
+      {
+        label: "Orders Count",
+        data: monthlyCounts,
+        backgroundColor: "white",
+        borderRadius: 6,
+      },
+    ],
+  };
+
+  const chartdatatotal = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "August", "September", "October", "November", "December"],
+    datasets: [
+      {
+        label: "Monthly Total",
+        data: monthlyTotal,
+        backgroundColor: "white",
+        borderRadius: 6,
+      },
+    ],
+  };
+
   return (
-     <div className="rounded-xl shadow  p-6 w-full max-w-3xl">
-      <h2 className="text-xl font-semibold mb-4 text-white text-center mt-4" >Monthly Orders</h2>
-      <div className="w-full h-80 flex flex-col bg-[#1F1D2B] mb-4"> 
-        <Bar data={chartdata} options={options} />
-        
-      </div>
-      <h2 className="text-xl font-semibold mb-4 text-white text-center mt-4" >Monthly Total</h2>
+    <div className="w-full flex flex-col">
+      <h2 className="text-xl font-semibold mb-4 text-white text-center mt-4">Monthly Stats</h2>
 
-         <div className="w-full h-80 flex flex-col bg-[#1F1D2B] mt-2"> 
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Chart 1 */}
+        <div className="w-full lg:w-1/2 bg-[#1F1D2B] p-4 rounded-lg">
+          <h3 className="text-white text-center mb-2">Monthly Orders</h3>
+          <div className="h-72">
+            <Bar data={chartdata} options={options} />
+          </div>
+        </div>
 
-        <Bar data={chartdatatotal} options={options} />
-        
+        {/* Chart 2 */}
+        <div className="w-full lg:w-1/2 bg-[#1F1D2B] p-4 rounded-lg">
+          <h3 className="text-white text-center mb-2">Monthly Total</h3>
+          <div className="h-72">
+            <Bar data={chartdatatotal} options={options} />
+          </div>
+        </div>
       </div>
     </div>
   );

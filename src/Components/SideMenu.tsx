@@ -3,44 +3,34 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const SideMenu = () => {
-  const [active,setActive]=useState("home");
+  const [active, setActive] = useState("home");
+
+  const menuItems = [
+    { path: "/", icon: <HomeIcon size={30} />, key: "home" },
+    { path: "/history", icon: <History size={30} />, key: "history" },
+    { path: "/chart", icon: <PieChart size={30} />, key: "chart" },
+    { path: "/add", icon: <PlusCircle size={30} />, key: "add" },
+    { path: "/user", icon: <User size={30} />, key: "user" },
+  ];
+
   return (
-    <div className="fixed top-0 left-0 h-full w-32 bg-[#1F1D2B] flex flex-col items-center gap-8 py-6 " >
-      <div className="text-white text-2xl h-14 w-20 mr-3 font-bold">BitePOS</div>
-      <Link  to={"/"}><div className={`px-4 py-3 mr-3 rounded-lg  ${active==="home" ?"bg-[#EA7C69] text-white":"text-[tomato]"} `} onClick={()=>{
-        setActive("home")
-      
-      }}>
-     <HomeIcon size={30} ></HomeIcon>
-      </div></Link>
-<Link to={"/history"}>
-     <div className={`px-4 py-3 mr-3 rounded-lg  ${active==="history" ?"bg-[#EA7C69] text-white":"text-[tomato]"} `} onClick={()=>{
-        setActive("history")
-      }}>
-     <History size={30} ></History>
-      </div>
-</Link>
-<Link to={"/chart"}>
-      <div className={`px-4 py-3 mr-3 rounded-lg  ${active==="chart" ?"bg-[#EA7C69] text-white":"text-[tomato]"} `} onClick={()=>{
-        setActive("chart")
-      }}>
-     <PieChart size={30} ></PieChart>
-      </div>
-</Link>
- <Link to={"/add"}>
-      <div className={`px-4 py-3 mr-3 rounded-lg  ${active==="add" ?"bg-[#EA7C69] text-white":"text-[tomato]"} `} onClick={()=>{
-        setActive("add")
-      }}>
-   <PlusCircle size={30} ></PlusCircle>
-      </div>
-</Link>
-<Link to={"/user"}>
-       <div className={`px-4 py-3 mr-3 rounded-lg  ${active==="user" ?"bg-[#EA7C69] text-white":"text-[tomato]"} `} onClick={()=>{
-        setActive("user")
-      }}>
-    <User size={30} ></User>
-      </div>
-</Link>
+    <div className="h-screen w-32 bg-[#1F1D2B] flex flex-col items-center gap-8 py-6 sticky top-0 left-0">
+      <div className="text-white text-2xl font-bold">BitePOS</div>
+
+      {menuItems.map(item => (
+        <Link to={item.path} key={item.key}>
+          <div
+            className={`px-4 py-3 rounded-lg mr-3 cursor-pointer ${
+              active === item.key
+                ? "bg-[#EA7C69] text-white"
+                : "text-[tomato]"
+            }`}
+            onClick={() => setActive(item.key)}
+          >
+            {item.icon}
+          </div>
+        </Link>
+      ))}
     </div>
-  )
-}
+  );
+};

@@ -7,29 +7,30 @@ import { Chart } from './Pages/Chart';
 import { History } from './Pages/History';
 import { Home } from './Pages/Home';
 import { User } from "./Pages/User";
+
 function App() {
-// bg-[#252836]
   return (
-<BrowserRouter>
-<div className='ml-32flex bg-[#252836] mr-52 mx-auto h-full '>
-  <SideMenu/>
-  <Bill/>
-  <div className="ml-36  p-4 mx-auto mr-36 h-screen max-w-screen-xl">
-    <Routes>
-      <Route path="/" element={<Home />} />
+    <BrowserRouter>
+      <div className="flex bg-[#252836] min-h-screen overflow-x-hidden">
+        {/* Sidebar */}
+        <SideMenu />
+
+        {/* Main content */}
+        <div className="max-w-screen">
+          <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/history" element={<History />} />
             <Route path="/chart" element={<Chart />} />
             <Route path="/add" element={<Add />} />
-            <Route path="/user" element={<User/>}/>
-    </Routes>
-  </div>
-</div>
+            <Route path="/user" element={<User />} />
+          </Routes>
+        </div>
 
-
-
-
-</BrowserRouter>
-  )
+        {/* Bill Panel */}
+        <Bill />
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
