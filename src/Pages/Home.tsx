@@ -210,7 +210,7 @@ window.dispatchEvent(new Event("ordersUpdated"));
         </>
       )}
 
-      <div className="flex flex-col mr-7 h-full overflow-visible" >
+      <div className="flex flex-col  h-full px-8   mt-4 max-w-5xl " >
         <div className="flex flex-row justify-between items-center">
           <div className="text-gray-200 text-xl font-bold">
             {new Date().toLocaleDateString("en-CA")}
@@ -228,7 +228,7 @@ window.dispatchEvent(new Event("ordersUpdated"));
           {cate.map((item) => (
             <div
               key={item.id}
-              className={`cursor-pointer text-xl  font-bold ${
+              className={`cursor-pointer text-lg  font-bold ${
                 active === item.name
                   ? "text-[#EA7C69] border-b-4"
                   : "text-white"
