@@ -86,7 +86,7 @@ const total=Array(12).fill(0)
   labels: ["Jan", "Feb", "Mar", "Apr", "May","June","July","August","September","Octomber","November","December"],
   datasets: [
     {
-      label: "Orders",
+      label: "Orders Count",
       data: monthlyCounts,
       backgroundColor: "white", 
       borderRadius: 6,
@@ -99,7 +99,7 @@ const chartdatatotal = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May","June","July","August","September","Octomber","November","December"],
   datasets: [
     {
-      label: "Orders",
+      label: "Month Total",
       data: monthlyTotal,
       backgroundColor: "white", 
       borderRadius: 6,
@@ -115,7 +115,10 @@ const chartdatatotal = {
         <Bar data={chartdata} options={options} />
         
       </div>
+      <h2 className="text-xl font-semibold mb-4 text-white text-center mt-4" >Monthly Total</h2>
+
          <div className="w-full h-80 flex flex-col bg-[#1F1D2B] mt-2"> 
+
         <Bar data={chartdatatotal} options={options} />
         
       </div>
