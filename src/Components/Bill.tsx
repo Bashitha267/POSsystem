@@ -117,7 +117,7 @@ export const Bill = () => {
         </div>
       )}
 
-      <div className="fixed top-0 right-0 h-screen w-96 bg-[#1F1D2B] flex flex-col gap-8 pt-5 text-white overflow-y-scroll scrollbar-hide">
+      <div className="fixed top-0 right-0 h-screen max-w-2xl bg-[#1F1D2B] flex flex-col gap-8 pt-5 text-white overflow-y-scroll scrollbar-hide">
         <div className="ml-8 flex flex-row text-lg font-bold">Order</div>
         {orders.map((item) => (
           <div

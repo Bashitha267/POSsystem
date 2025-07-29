@@ -210,7 +210,7 @@ window.dispatchEvent(new Event("ordersUpdated"));
         </>
       )}
 
-      <div className="flex flex-col  h-full px-8   mt-4 max-w-5xl " >
+      <div className="flex flex-col  h-full lg:px-3 px-8   mt-4  xl:max-w-5xl lg:mr-5" >
         <div className="flex flex-row justify-between items-center">
           <div className="text-gray-200 text-xl font-bold">
             {new Date().toLocaleDateString("en-CA")}
@@ -231,7 +231,7 @@ window.dispatchEvent(new Event("ordersUpdated"));
               className={`cursor-pointer text-lg  font-bold ${
                 active === item.name
                   ? "text-[#EA7C69] border-b-4"
-                  : "text-white"
+                  : "text-white "
               }`}
               onClick={() => setActive(item.name)}
             >
@@ -243,7 +243,7 @@ window.dispatchEvent(new Event("ordersUpdated"));
           {sorted.map((item) => (
             <div
               key={item.id}
-              className="mb-8 z-40 mx-4 relative bg-[#1F1D2B] rounded-xl overflow-hidden w-64 h-80 text-white cursor-pointer"
+              className="mb-8 z-40 mx-4 relative bg-[#1F1D2B] rounded-xl overflow-hidden 2xl:w-64 2xl:h-80 lg:w-56 lg:h-64  text-white cursor-pointer"
               onClick={() => {
                 setModalProduct(item);
                 setQuantity(1);
@@ -251,7 +251,7 @@ window.dispatchEvent(new Event("ordersUpdated"));
             >
               <img
                 src={item.img}
-                className="w-64 h-64 object-cover -translate-y-9"
+                className="2xl:w-64 2xl:h-64 lg:w-52 lg:h-48 object-cover "
                 alt="Food"
               />
               <div className="absolute z-10 bottom-0 justify-end left-0 w-full flex flex-col h-20 p-4">

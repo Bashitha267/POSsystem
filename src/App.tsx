@@ -11,12 +11,12 @@ import { User } from "./Pages/User";
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex bg-[#252836] min-h-screen overflow-x-hidden">
+      <div className="flex bg-[#252836] min-h-screen h-screen overflow-x-hidden">
         {/* Sidebar */}
         <SideMenu />
 
         {/* Main content */}
-        <div className="max-w-screen">
+        <div className="">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/history" element={<History />} />
