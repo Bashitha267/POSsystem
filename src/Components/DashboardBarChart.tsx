@@ -177,7 +177,7 @@ useEffect(() => {
       {
         label: "Orders Count",
         data: monthlyCounts,
-        backgroundColor: "white",
+        backgroundColor: "purple",
         borderRadius: 6,
       },
     ],
@@ -202,7 +202,7 @@ useEffect(() => {
       {
         label: "Monthly Total",
         data: monthlyTotal,
-        backgroundColor: "white",
+        backgroundColor: "purple",
         borderRadius: 6,
       },
     ],
@@ -216,15 +216,15 @@ useEffect(() => {
 
       <div className="flex flex-col lg:flex-row gap-6 mt-4">
         <div className="w-full lg:w-1/2 bg-[#1F1D2B] p-4 rounded-lg h-fit">
-          <h3 className="text-white text-center mb-2">Monthly Orders</h3>
-          <div>
+          <h3 className="text-white text-center mb-2 font-bold">Monthly Orders</h3>
+          <div className="xl:h-fit xl:w-80 2xl:w-full 2xl:h-full">
             <Bar data={chartdata} options={options} />
           </div>
         </div>
 
         <div className="w-full lg:w-1/2 bg-[#1F1D2B] p-4 rounded-lg h-fit">
-          <h3 className="text-white text-center mb-2">Monthly Total</h3>
-          <div>
+          <h3 className="text-white text-center mb-2 font-bold">Monthly Total</h3>
+          <div className="xl:h-fit xl:w-80  2xl:w-full 2xl:h-full">
             <Bar data={chartdatatotal} options={options} />
           </div>
         </div>

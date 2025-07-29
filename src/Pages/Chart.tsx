@@ -53,7 +53,7 @@ export const Chart = () => {
     getOrders();
   }, [inputDate,inpOrderCountDay]);
 return (
-    <div className="flex flex-col w-full px-4 mt-4">
+    <div className="flex flex-col  xl:max-w-11/12  2xl:w-full px-4 mt-4">
     
       <div className="flex flex-col md:flex-row gap-5 justify-between">
 
@@ -105,7 +105,7 @@ return (
       </div>
 
       
-      <div className="mt-6 w-full h-fit">
+      <div className="mt-6 w-full 2xl:h-fit xl:h-full">
         <DashboardBarChart />
       </div>
     </div>
