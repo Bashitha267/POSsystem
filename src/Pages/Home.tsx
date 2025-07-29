@@ -110,6 +110,24 @@ export const Home = () => {
     fetchProducts();
   }, []);
 
+useEffect(() => {
+  const loadOrders = () => {
+    const storedOrders = localStorage.getItem("pos_orders");
+    if (storedOrders) {
+      setOrder(JSON.parse(storedOrders));
+    } else {
+      setOrder([]); 
+    }
+  };
+
+  loadOrders();
+  window.addEventListener("ordersUpdated", loadOrders);
+
+  return () => {
+    window.removeEventListener("ordersUpdated", loadOrders);
+  };
+}, []);
+
   useEffect(() => {
     const filtered = products.filter(
       (item) => item.category?.name === active

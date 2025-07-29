@@ -156,7 +156,11 @@ export const Bill = () => {
             <div className="font-bold text-xl">{total}</div>
           </div>
           <div className="flex flex-row gap-4 justify-center text-lg">
-            <button className="px-6 py-1 rounded-xl border-2 border-white">Cancel</button>
+            <button className="px-6 py-1 rounded-xl border-2 border-white" onClick={()=>{
+              setOrders([])
+              localStorage.removeItem("pos_orders");
+              window.dispatchEvent(new Event("ordersUpdated"))
+            }}>Cancel</button>
             <button
               className="bg-[tomato] px-6 py-1 rounded-xl text-white"
               onClick={(e) => confirm_order(e)}
