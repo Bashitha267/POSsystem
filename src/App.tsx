@@ -16,7 +16,7 @@ function App() {
         <SideMenu />
 
         {/* Main content */}
-        <div className="">
+        <div className="max-w-screen">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/history" element={<History />} />
